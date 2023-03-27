@@ -1,90 +1,92 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class MobileList extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       mobiles: [
         {
-          id: '1',
-          name: 'oneplus11',
+          id: "1",
+          name: "oneplus11",
           price: 56999,
-          isPurchased: false
+          isPurchased: true,
         },
         {
-          id: '2',
-          name: 'Samsung S23 Ultra',
+          id: "2",
+          name: "Samsung S23 Ultra",
           price: 124999,
-          isPurchased: false
+          isPurchased: false,
         },
         {
-          id: '3',
-          name: 'Mi 13',
+          id: "3",
+          name: "Mi 13",
           price: 56999,
-          isPurchased: true
+          isPurchased: true,
         },
         {
-          id: '4',
-          name: 'iphone 13',
+          id: "4",
+          name: "iphone 13",
           price: 62990,
-          isPurchased: false
+          isPurchased: false,
         },
         {
-          id: '5',
-          name: 'Redmi Note 13 pro',
+          id: "5",
+          name: "Redmi Note 13 pro",
           price: 19990,
-          isPurchased: true
+          isPurchased: true,
         },
         {
-          id: '6',
-          name: 'Poco M4',
+          id: "6",
+          name: "Poco M4",
           price: 13999,
-          isPurchased: true
-        }
+          isPurchased: false,
+        },
       ],
-      filterMobile: []
-    }
+      filterMobile: [],
+    };
   }
 
   sortAscending = (property) => {
     const sortedMobiles = [...this.state.mobiles].sort(
       (a, b) => a[property] - b[property]
-    )
-    this.setState({ mobiles: sortedMobiles })
-  }
+    );
+    this.setState({ mobiles: sortedMobiles });
+  };
 
   sortDescending = (property) => {
     const sortedMobiles = [...this.state.mobiles].sort(
       (a, b) => b[property] - a[property]
-    )
-    this.setState({ mobiles: sortedMobiles })
-  }
+    );
+    this.setState({ mobiles: sortedMobiles });
+  };
 
   sortByIdAscending = () => {
-    this.sortAscending('id')
-  }
+    this.sortAscending("id");
+  };
 
   sortByIdDescending = () => {
-    this.sortDescending('id')
-  }
+    this.sortDescending("id");
+  };
 
   sortByPriceAscending = () => {
-    this.sortAscending('price')
-  }
+    this.sortAscending("price");
+  };
 
   sortByPriceDescending = () => {
-    this.sortDescending('price')
-  }
+    this.sortDescending("price");
+  };
 
   filterdByIsPurchased = () => {
     if (this.state.filterMobile.length === 0) {
-      const filtered = this.state.mobiles.filter((mobile) => mobile.isPurchased)
-      this.setState({ mobiles: filtered, filterMobile: this.state.mobiles })
+      const filtered = this.state.mobiles.filter(
+        (mobile) => mobile.isPurchased
+      );
+      this.setState({ mobiles: filtered, filterMobile: this.state.mobiles });
     } else {
-      this.setState({ mobiles: this.state.filterMobile, filterMobile: [] })
+      this.setState({ mobiles: this.state.filterMobile, filterMobile: [] });
     }
-  }
+  };
 
   render() {
     return (
@@ -93,8 +95,8 @@ class MobileList extends Component {
           <ul>
             {this.state.mobiles.map((mobile) => (
               <li key={mobile.id}>
-                {' '}
-                {mobile.name} - {mobile.price}{' '}
+                {" "}
+                {mobile.name} - {mobile.price}{" "}
               </li>
             ))}
           </ul>
@@ -118,8 +120,8 @@ class MobileList extends Component {
           <button onClick={this.filterdByIsPurchased}>Filter</button>
         </div>
       </>
-    )
+    );
   }
 }
 
-export default MobileList
+export default MobileList;
